@@ -1,0 +1,47 @@
+import javax.swing.JOptionPane;
+
+public class ClassSistemaAvaliacao {
+    public static void main(String[] args) {
+        try {
+            // Entrada das notas com caixas de diálogo
+            double nota1 = Double.parseDouble(
+                JOptionPane.showInputDialog(null, "Digite a nota da 1ª prova:")
+            );
+
+            double nota2 = Double.parseDouble(
+                JOptionPane.showInputDialog(null, "Digite a nota da 2ª prova:")
+            );
+
+            double trabalho = Double.parseDouble(
+                JOptionPane.showInputDialog(null, "Digite a nota do trabalho:")
+            );
+
+            // Cálculo da média
+            double media = (nota1 + nota2 + trabalho) / 3;
+
+            // Determina situação do aluno
+            String situacao;
+            if (media >= 6.0) {
+                situacao = "Aprovado";
+            } else {
+                situacao = "Reprovado";
+            }
+
+            // Exibe o resultado formatado
+            JOptionPane.showMessageDialog(
+                null,
+                String.format("Média: %.2f\nSituação: %s", media, situacao),
+                "Resultado da Avaliação",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Erro: Digite apenas valores numéricos válidos!",
+                "Entrada Inválida",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+}
